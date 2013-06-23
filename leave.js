@@ -85,7 +85,7 @@ function _pr() {
 function _lg() {
 	var lg = $('[name="confirmed"]');
 	if(lg.length > 0) {
-		port.postMessage({ message: "fbGExtEvent_lv", messages: '您已經從這個社團離開: ' + _currentTitle });
+		port.postMessage({ message: "fbGExtEvent_lv", messages: unescape('%u60A8%u5DF2%u7D93%u5F9E%u9019%u500B%u793E%u5718%u96E2%u958B%3A%20') + _currentTitle });
 		lg[0].click();
 	} else
 		setTimeout(_lg, 100);
