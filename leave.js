@@ -1,3 +1,12 @@
+function _or(u) {
+	var w = window.open('http://spamgroup.tonyq.org/report#_rg=' + u, 'fbG_report', 'width=1000,height=700');
+}
+function _rp() {
+	var gt = $(this).parent().find('a[data-gt]');
+	var gp = { node: gt.attr('title'), id: JSON.parse(gt.attr('data-gt')).bmid };
+	var url = 'https://www.facebook.com/groups/' + gp.id;
+	_or(url);
+}
 function _ls() {
 	$('.itemLabel').filter('.fcb').each(function() {
 		var gt = $(this).parents('a');
@@ -9,8 +18,15 @@ function _ls() {
 		port.postMessage({ message: "fbGExtEvent_qg", data: qg });
 		_qg();
 	} else {
-		alert('恭喜！您目前沒有已知的煩人社團！');
+		port.postMessage({ message: "fbGExtEvent_gp" });
 	}
+}
+function _rb() {
+	$('.itemLabel').filter('.fcb').each(function() {
+		var gt = $(this).parents('a').css('width', '520px');
+		var rp = $('<button />').html('我就是要回報這個社團').on('click', _rp);
+		gt.before(rp);
+	});
 }
 var qg = [];
 var gd;
@@ -24,6 +40,8 @@ port.onMessage.addListener(function(msg) {
 	if(typeof(msg.path) == "string")
 		$('<script/>').attr('src', msg.path).appendTo(document);
 	*/
+	if(typeof(msg.goPage) == "string")
+		location.href = msg.goPage;
 	if(typeof(msg.qg_data) == "object") {
 		qg = msg.qg_data;
 		if(qg.length > 0) {
@@ -32,7 +50,6 @@ port.onMessage.addListener(function(msg) {
 		} else {
 			console.log('nothing to do');
 			if(msg.msg_data.length > 0) {
-				alert(msg.msg_data.join('\n'));
 				port.postMessage({ message: "fbGExtEvent_lvl" });
 			}
 		}
@@ -41,6 +58,7 @@ port.onMessage.addListener(function(msg) {
 		port.postMessage({ message: "fbGExtEvent_ck" });
 });
 port.postMessage({ message: "fbGExtEvent_jqp" });
+_rb();
 function _lc() {
 	port.postMessage({ message: "fbGExtEvent_gd" });
 }

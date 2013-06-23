@@ -11,9 +11,15 @@ chrome.webRequest.onHeadersReceived.addListener(function (details) {
 	types : ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
 }, ["blocking", "responseHeaders"]);
 //
-chrome.browserAction.onClicked.addListener(function(tab) {
+chrome.tabs.onUpdated.addListener(function(tabId, info, tab) {
+	if(tab.url.toLowerCase().indexOf('facebook.com') != -1)
+		chrome.pageAction.show(tabId);
+	else
+		chrome.pageAction.hide(tabId);
+});
+chrome.pageAction.onClicked.addListener(function(tab) {
 	_tabid = tab.id;
-	if(tab.url.toLowerCase().indexOf('/bookmarks/groups') == -1) {
+	if(tab.url.toLowerCase().indexOf('/bookmarks/groups') == -1 && confirm('這個動作即將要離開您所瀏覽的頁面，要繼續嗎？')) {
 		chrome.tabs.executeScript(_tabid, { code: "location.href='https://www.facebook.com/bookmarks/groups';" });
 		_clicked = true;
 	} else {
@@ -37,8 +43,14 @@ chrome.extension.onConnect.addListener(
 						qg = msg.data;
 					if(msg.message == "fbGExtEvent_lv")
 						message.push(msg.messages);
-					if(msg.message == "fbGExtEvent_lvl")
+					if(msg.message == "fbGExtEvent_lvl") {
+						alert(message.join('\n'));
 						message = [];
+					}
+					if(msg.message == "fbGExtEvent_gp") {
+						alert('恭喜！您目前沒有已知的煩人社團！請記得常去粉絲團專頁取得最新資訊喔～');
+						port.postMessage({ goPage: 'https://www.facebook.com/IWantQuitGroups' });
+					}
 				}
 			);
 		}
