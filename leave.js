@@ -1,5 +1,5 @@
 function _or(u) {
-	var w = window.open('http://spamgroup.tonyq.org/report#_rg=' + u, 'fbG_report', 'width=1000,height=700');
+	var w = window.open('http://antispam.tonyq.org/report#_rg=' + u, 'fbG_report', 'width=1000,height=700');
 }
 function _rp() {
 	var gt = $(this).parent().find('a[data-gt]');
