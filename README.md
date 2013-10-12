@@ -9,3 +9,8 @@
 ## 如何安裝？
 
 請至此下載即可：[我就是要離開社團 - Chrome Web Store](https://chrome.google.com/webstore/detail/bdfdajiapmgbpimacnhdgpbfmedanalf)
+
+## 粉絲團
+
+* [我就是要離開社團的Google+專頁](https://plus.google.com/105230752421095885845)
+* [我就是要離開社團的Facebook專頁](https://www.facebook.com/IWantQuitGroup)
