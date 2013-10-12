@@ -1,7 +1,8 @@
 // ref: http://brianmayer.com/2012/12/defeating-chromes-content-security-policy-header-via-a-chrome-extension/
 chrome.webRequest.onHeadersReceived.addListener(function (details) {
 	for (i = 0; i < details.responseHeaders.length; i++) {
-		if (details.responseHeaders[i].name.toLowerCase() == "x-webkit-csp") {
+		var h = details.responseHeaders[i].name.toLowerCase();
+		if (h == "x-webkit-csp" || h == "content-security-policy") {
 			details.responseHeaders[i].value = "default-src *;script-src chrome-extension://* *.tonyq.org *.facebook.com *.fbcdn.net *.facebook.net *.google-analytics.com *.virtualearth.net *.google.com 127.0.0.1:* *.spotilocal.com:* chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl 'unsafe-inline' 'unsafe-eval' https://*.akamaihd.net http://*.akamaihd.net;style-src * 'unsafe-inline';connect-src *.facebook.com *.fbcdn.net *.facebook.net *.spotilocal.com:* *.akamaihd.net ws://*.facebook.com:*";
 		}
 	}
@@ -19,8 +20,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, info, tab) {
 });
 chrome.pageAction.onClicked.addListener(function(tab) {
 	_tabid = tab.id;
-	if(tab.url.toLowerCase().indexOf('/bookmarks/groups') == -1 && confirm(unescape('%u9019%u500B%u52D5%u4F5C%u5373%u5C07%u8981%u96E2%u958B%u60A8%u6240%u700F%u89BD%u7684%u9801%u9762%uFF0C%u8981%u7E7C%u7E8C%u55CE%uFF1F'))) {
-		chrome.tabs.executeScript(_tabid, { code: "location.href='https://www.facebook.com/bookmarks/groups';" });
+	if(tab.url.toLowerCase().indexOf('/bookmarks/groups') == -1 && confirm(chrome.extension.getBackgroundPage().getLocaleString('leaveConfirm'))) {
+		chrome.tabs.executeScript(_tabid, { code: "window.open('https://www.facebook.com/bookmarks/groups', 'fbGExtFanPage');" });
 		_clicked = true;
 	} else {
 		chrome.tabs.executeScript(tab.id, { code: "_lc();" });
@@ -48,8 +49,8 @@ chrome.extension.onConnect.addListener(
 						message = [];
 					}
 					if(msg.message == "fbGExtEvent_gp") {
-						if(confirm(unescape('%u606D%u559C%uFF01%u60A8%u76EE%u524D%u6C92%u6709%u5DF2%u77E5%u7684%u7169%u4EBA%u793E%u5718%uFF01%u8ACB%u8A18%u5F97%u5E38%u53BB%u7C89%u7D72%u5718%u5C08%u9801%u53D6%u5F97%u6700%u65B0%u8CC7%u8A0A%u5594%uFF5E%0A%0A%u6309%u4E0B%u78BA%u5B9A%u5F8C%u9032%u5165%u7C89%u7D72%u5718%u3002')))
-							port.postMessage({ goPage: 'https://www.facebook.com/IWantQuitGroup' });
+						if(confirm(chrome.extension.getBackgroundPage().getLocaleString('noGroupsAndGotoFanPageConfirm')))
+							port.postMessage({ goPage: 'http://fbspam.hhmr.biz' });
 					}
 				}
 			);

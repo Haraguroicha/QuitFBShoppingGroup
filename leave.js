@@ -24,7 +24,7 @@ function _ls() {
 function _rb() {
 	$('.itemLabel').filter('.fcb').each(function() {
 		var gt = $(this).parents('a').css('width', '520px');
-		var rp = $('<button />').html('我就是要回報這個社團').on('click', _rp);
+		var rp = $('<button />').html(getLocaleString('reportThis')).on('click', _rp);
 		gt.before(rp);
 	});
 }
@@ -85,7 +85,7 @@ function _pr() {
 function _lg() {
 	var lg = $('[name="confirmed"]');
 	if(lg.length > 0) {
-		port.postMessage({ message: "fbGExtEvent_lv", messages: unescape('%u60A8%u5DF2%u7D93%u5F9E%u9019%u500B%u793E%u5718%u96E2%u958B%3A%20') + _currentTitle });
+		port.postMessage({ message: "fbGExtEvent_lv", messages: getLocaleString('youreLeaved') + _currentTitle });
 		lg[0].click();
 	} else
 		setTimeout(_lg, 100);

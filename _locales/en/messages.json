@@ -1,0 +1,26 @@
+{
+   "_": {
+      "message": ""
+   },
+   "extName": {
+      "message": "I wanna quit Facebook Shopping Group"
+   },
+   "extDescription": {
+      "message": "I wanna quit shopping group immediately !!"
+   },
+   "extActionTitle": {
+      "message": "Check and leave shopping groups now !!"
+   },
+   "reportThis": {
+      "message": "I wanna report this"
+   },
+   "youreLeaved": {
+      "message": "You're leaved from those groups: "
+   },
+   "leaveConfirm": {
+      "message": "This action will leave this page which you're viewing, do you want to continue?"
+   },
+   "noGroupsAndGotoFanPageConfirm": {
+      "message": "Congratulation! Your account were no any annoying groups as we knows! Remember go to us fan page to know the news and information~\n\nClick 'OK' to go our fan-page"
+   }
+}

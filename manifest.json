@@ -1,7 +1,8 @@
 {
-   "name": "我就是要離開社團",
+   "name": "__MSG_extName__",
    "version": "0.1.4",
-   "description": "討人厭的FB購物社團，我現在就是要離開！",
+   "description": "__MSG_extDescription__",
+   "default_locale": "zh_TW",
    "background": {
       "page": "background.html"
    },
@@ -15,14 +16,14 @@
       "matches": [
          "*://*.facebook.com/bookmarks/*"
       ],
-      "js": ["jquery-1.8.0.min.js", "leave.js"],
+      "js": ["jquery-1.8.0.min.js", "locales.js", "leave.js"],
       "run_at": "document_end"
    }, {
       "matches": [
          "*://spamgroup.tonyq.org/*",
          "*://antispam.tonyq.org/*"
       ],
-      "js": ["jquery-1.8.0.min.js", "report.js"],
+      "js": ["jquery-1.8.0.min.js", "locales.js", "report.js"],
       "run_at": "document_end"
    } ],
    "options_page": "option.html",
@@ -30,7 +31,7 @@
    "minimum_chrome_version": "20",
    "page_action": {
       "default_icon": "favicon_256.png",
-      "default_title": "檢查並且離開購物社團！"
+      "default_title": "__MSG_extActionTitle__"
    },
    "permissions": [
       "tabs",
@@ -40,5 +41,5 @@
       "*://spamgroup.tonyq.org/groups/json",
       "*://antispam.tonyq.org/groups/json"
    ],
-   "web_accessible_resources": [ "jquery-1.8.0.min.js", "leave.js" ]
+   "web_accessible_resources": [ "jquery-1.8.0.min.js", "locales.js", "leave.js", "report.js" ]
 }

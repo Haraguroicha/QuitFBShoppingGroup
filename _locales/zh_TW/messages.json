@@ -1,0 +1,26 @@
+{
+   "_": {
+      "message": ""
+   },
+   "extName": {
+      "message": "我就是要離開社團"
+   },
+   "extDescription": {
+      "message": "討人厭的FB購物社團，我現在就是要離開！"
+   },
+   "extActionTitle": {
+      "message": "檢查並且離開購物社團！"
+   },
+   "reportThis": {
+      "message": "我就是要回報這個社團"
+   },
+   "youreLeaved": {
+      "message": "您已經從這個社團離開: "
+   },
+   "leaveConfirm": {
+      "message": "這個動作即將要離開您所瀏覽的頁面，要繼續嗎？"
+   },
+   "noGroupsAndGotoFanPageConfirm": {
+      "message": "恭喜！您目前沒有已知的煩人社團！請記得常去粉絲團專頁取得最新資訊喔～\n\n按下確定後進入粉絲團。"
+   }
+}
